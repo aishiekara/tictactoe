@@ -1,5 +1,5 @@
 # tictactoe
-tictactoe game using django
+.. tictactoe game using django
 
 Building
 -------
@@ -18,4 +18,4 @@ go to http://127.0.0.1:8000/admin/game
 Demo:
 https://drive.google.com/file/d/11ZAnNnCFCLFNp2YsR1wgznQtuPlBjXn-/view
 
-Author: Kara
+.. Author: Kara
