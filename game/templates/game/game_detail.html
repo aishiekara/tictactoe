@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block body %}
+    {% with next_player=game.next_player game_over=game.is_game_over %}
+        {% if game_over == 'X' %}
+            <h1>{{game.player_x}} - X wins!</h1>
+            <a href="{% url 'game:index' %}">Start a new game</a>
+        {% elif game_over == 'O' %}
+            <h1>{{game.player_o}} - O wins!</h1>
+            <a href="{% url 'game:index' %}">Start a new game</a>
+        {% elif game_over == ' ' %}
+            <h1>Draw!</h1>
+            <a href="{% url 'game:index' %}">Start a new game</a>
+        {% else %}
+            {# Game still in progress #}
+            {% if next_player == 'O' %}
+              <h1>{{game.player_o}} - {{ next_player }} to play</h1>
+            {% else %}
+              <h1>{{game.player_x}} - {{ next_player }} to play</h1>
+            {% endif %}
+        {% endif %}
+
+        <div class="board">
+            <div class="row">
+                {% include "includes/square.html" with game=game index=0 play=game.board.0 %}
+                {% include "includes/square.html" with game=game index=1 play=game.board.1 %}
+                {% include "includes/square.html" with game=game index=2 play=game.board.2 %}
+            </div>
+            <div class="row">
+                {% include "includes/square.html" with game=game index=3 play=game.board.3 %}
+                {% include "includes/square.html" with game=game index=4 play=game.board.4 %}
+                {% include "includes/square.html" with game=game index=5 play=game.board.5 %}
+            </div>
+            <div class="row">
+                {% include "includes/square.html" with game=game index=6 play=game.board.6 %}
+                {% include "includes/square.html" with game=game index=7 play=game.board.7 %}
+                {% include "includes/square.html" with game=game index=8 play=game.board.8 %}
+            </div>
+        </div>
+    {% endwith %}
+{% endblock %}
